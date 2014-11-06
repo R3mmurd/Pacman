@@ -1,0 +1,72 @@
+<RCC>
+    <qresource prefix="/pacman">
+        <file alias="1">Sprites/Pacman/01.png</file>
+        <file alias="2">Sprites/Pacman/02.png</file>
+        <file alias="3">Sprites/Pacman/03.png</file>
+        <file alias="4">Sprites/Pacman/04.png</file>
+        <file alias="5">Sprites/Pacman/05.png</file>
+        <file alias="6">Sprites/Pacman/06.png</file>
+        <file alias="7">Sprites/Pacman/07.png</file>
+        <file alias="8">Sprites/Pacman/08.png</file>
+    </qresource>
+    <qresource prefix="/tux/black">
+        <file alias="1">Sprites/Tux/Black/01.png</file>
+        <file alias="2">Sprites/Tux/Black/02.png</file>
+        <file alias="3">Sprites/Tux/Black/03.png</file>
+        <file alias="4">Sprites/Tux/Black/04.png</file>
+        <file alias="5">Sprites/Tux/Black/05.png</file>
+        <file alias="6">Sprites/Tux/Black/06.png</file>
+        <file alias="7">Sprites/Tux/Black/07.png</file>
+        <file alias="8">Sprites/Tux/Black/08.png</file>
+    </qresource>
+    <qresource prefix="/tux/blue">
+        <file alias="1">Sprites/Tux/Blue/01.png</file>
+        <file alias="2">Sprites/Tux/Blue/02.png</file>
+        <file alias="3">Sprites/Tux/Blue/03.png</file>
+        <file alias="4">Sprites/Tux/Blue/04.png</file>
+        <file alias="5">Sprites/Tux/Blue/05.png</file>
+        <file alias="6">Sprites/Tux/Blue/06.png</file>
+        <file alias="7">Sprites/Tux/Blue/07.png</file>
+        <file alias="8">Sprites/Tux/Blue/08.png</file>
+    </qresource>
+    <qresource prefix="/tux/green">
+        <file alias="1">Sprites/Tux/Green/01.png</file>
+        <file alias="2">Sprites/Tux/Green/02.png</file>
+        <file alias="3">Sprites/Tux/Green/03.png</file>
+        <file alias="4">Sprites/Tux/Green/04.png</file>
+        <file alias="5">Sprites/Tux/Green/05.png</file>
+        <file alias="6">Sprites/Tux/Green/06.png</file>
+        <file alias="7">Sprites/Tux/Green/07.png</file>
+        <file alias="8">Sprites/Tux/Green/08.png</file>
+    </qresource>
+    <qresource prefix="/tux/red">
+        <file alias="1">Sprites/Tux/Red/01.png</file>
+        <file alias="2">Sprites/Tux/Red/02.png</file>
+        <file alias="3">Sprites/Tux/Red/03.png</file>
+        <file alias="4">Sprites/Tux/Red/04.png</file>
+        <file alias="5">Sprites/Tux/Red/05.png</file>
+        <file alias="6">Sprites/Tux/Red/06.png</file>
+        <file alias="7">Sprites/Tux/Red/07.png</file>
+        <file alias="8">Sprites/Tux/Red/08.png</file>
+    </qresource>
+    <qresource prefix="/tux/white">
+        <file alias="1">Sprites/Tux/White/01.png</file>
+        <file alias="2">Sprites/Tux/White/02.png</file>
+        <file alias="3">Sprites/Tux/White/03.png</file>
+        <file alias="4">Sprites/Tux/White/04.png</file>
+        <file alias="5">Sprites/Tux/White/05.png</file>
+        <file alias="6">Sprites/Tux/White/06.png</file>
+        <file alias="7">Sprites/Tux/White/07.png</file>
+        <file alias="8">Sprites/Tux/White/08.png</file>
+    </qresource>
+    <qresource prefix="/tux/yellow">
+        <file alias="1">Sprites/Tux/Yellow/01.png</file>
+        <file alias="2">Sprites/Tux/Yellow/02.png</file>
+        <file alias="3">Sprites/Tux/Yellow/03.png</file>
+        <file alias="4">Sprites/Tux/Yellow/04.png</file>
+        <file alias="5">Sprites/Tux/Yellow/05.png</file>
+        <file alias="6">Sprites/Tux/Yellow/06.png</file>
+        <file alias="7">Sprites/Tux/Yellow/07.png</file>
+        <file alias="8">Sprites/Tux/Yellow/08.png</file>
+    </qresource>
+</RCC>
