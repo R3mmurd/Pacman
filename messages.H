@@ -24,7 +24,7 @@
 # ifndef MESSAGES_H
 # define MESSAGES_H
 
-# include <string>
+# include <QString>
 
 enum Message
 {
@@ -39,7 +39,7 @@ class Message_String
   Message_String() { }
 
 public:
-  static std::string get(const int & message)
+  static QString get(const int & message)
   {
     switch(message)
       {

@@ -21,8 +21,6 @@
 
   aledrums@gmail.com
 */
-# include <QPoint>
-
 # include <sprite_factory.H>
 
 # include <pacman.H>

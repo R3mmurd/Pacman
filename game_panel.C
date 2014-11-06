@@ -27,11 +27,12 @@
 # include <QMessageBox>
 # include <QFile>
 
-# include <sprite_factory.H>
 # include <game_panel.H>
 # include <game_map.H>
-# include <time_manager.H>
+# include <sprite_factory.H>
 # include <telegram_sender.H>
+
+# include <time_manager.H>
 
 Game_Panel::Game_Panel(QWidget * parent)
   : QWidget(parent), ptr_pacman(nullptr)
@@ -92,7 +93,7 @@ void Game_Panel::stop_game(const int & num_message)
 {
   timer.stop();
   status = Reinit;
-  message = Message_String::get(num_message).c_str();
+  message = Message_String::get(num_message);
   Time_Manager::get_instance().reset();
 }
 

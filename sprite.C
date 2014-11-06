@@ -116,4 +116,3 @@ Sprite & Sprite::operator = (Sprite && sprite)
   return *this;
 }
 
-

@@ -21,16 +21,17 @@
 
   aledrums@gmail.com
 */
+# include <cassert>
+# include <stdexcept>
+
+# include <QString>
+# include <QFile>
+# include <QTextStream>
+# include <QPainter>
+
 # include <game_map.H>
 # include <telegram_sender.H>
 # include <messages.H>
-
-# include <cassert>
-# include <fstream>
-# include <stdexcept>
-# include <string>
-
-# include <QPainter>
 
 Game_Map_Data::Game_Map_Data()
   : width(0), height(0), scale(0.0), map(nullptr), num_cookies(0),
@@ -48,31 +49,31 @@ void Game_Map_Data::load()
 {
   destroy_map();
 
-  std::string file_name = "Text_Files/current_map.txt";
+  QString file_name = "Text_Files/current_map.txt";
 
-  std::ifstream file(file_name.c_str());
+  QFile file(file_name);
 
-  if (not file)
+  if(not file.open(QIODevice::ReadOnly)) 
     throw std::logic_error("Current map file doesn't exist");
 
-  std::string map_name;
+  QTextStream in(&file);
 
-  file >> map_name;
-
-  if (map_name.size() == 0)
-    {
-      file.close();
-      throw std::logic_error("No current map selected");
-    }
+  QString map_name = in.readLine();
 
   file.close();
 
-  file.open(map_name.c_str());
+  if (map_name.size() == 0)
+    throw std::logic_error("No current map selected");
 
-  if (not file)
-    throw std::logic_error((map_name + " doesn't exist").c_str());
+  file.setFileName(map_name);
 
-  file >> width >> height >> scale;
+  if(not file.open(QIODevice::ReadOnly)) 
+    {
+      QString msg = map_name + " doesn't exist";
+      throw std::logic_error(msg.toStdString().c_str());
+    }
+
+  in >> width >> height >> scale;
 
   assert(width > 0 and height > 0 and scale > 0.0);
 
@@ -84,7 +85,7 @@ void Game_Map_Data::load()
 
       for (int j = 0; j < width; ++j)
         {
-          char c = file.get();
+          char c = in.read(1).at(0).toAscii();
 
           if (c == '\n')
             {
@@ -261,3 +262,4 @@ void Game_Map_Data::update(const real & dt)
   Telegram_Sender::get_instance().send_global_message(this,
                                                       Big_Cookie_Time_Over);
 }
+

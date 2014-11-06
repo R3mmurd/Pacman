@@ -188,4 +188,3 @@ Segment_Follower & Segment_Follower::operator = (Segment_Follower && sf)
   return *this;
 }
 
-

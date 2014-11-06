@@ -24,9 +24,10 @@
 # ifndef SPRITE_FACTORY_H
 # define SPRITE_FACTORY_H
 
+# include <QStringList>
+
 # include <singleton.H>
 # include <sprite.H>
-# include <QStringList>
 
 class Sprite_Factory_Data
 {
