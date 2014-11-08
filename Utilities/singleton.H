@@ -1,6 +1,7 @@
 /*
-  This file contains a generic implementation of the design pattern singleton.
-  Copyright (C) 2014 by Alejandro J. Mujica
+  This file contains a reusable and generic implementation of the Singleton
+  Pattern.
+  Copyright (C) 2012 by Alejandro J. Mujica
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -26,7 +27,7 @@
 
 # include <memory>
 
-/** Generic Singleton
+/** Generic Singleton.
  *
  *  This class was designed in order to being reused for any class which 
  *  requires only one instance.
