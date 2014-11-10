@@ -32,7 +32,7 @@
 class Time_Manager_Data
 {
   unsigned long long prev_time;
-  unsigned long long curr_time;
+  unsigned long long dt;
 
 protected:
   Time_Manager_Data();
@@ -40,7 +40,15 @@ protected:
 public:
   void reset();
 
-  unsigned long long delta_time();
+  const unsigned long long & delta_time();
+
+  const unsigned long long dt_msec() const;
+
+  const unsigned long long dt_sec() const;
+
+  const unsigned long long dt_min() const;
+
+  const unsigned long long dt_hour() const;
 };
 
 using Time_Manager = Singleton<Time_Manager_Data>;

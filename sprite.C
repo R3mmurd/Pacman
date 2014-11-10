@@ -21,6 +21,8 @@
 
   aledrums@gmail.com
 */
+# include <stdexcept>
+
 # include <QPainter>
 
 # include <sprite.H>

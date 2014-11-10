@@ -37,15 +37,15 @@ void Time_Manager_Data::reset()
   prev_time = 0;
 }
 
-unsigned long long Time_Manager_Data::delta_time()
+const unsigned long long & Time_Manager_Data::delta_time()
 {
   struct timeval now;
 
   gettimeofday(&now, 0);
 
-  curr_time = now.tv_sec * 1000 + now.tv_usec / 1000;
+  unsigned long long curr_time = now.tv_sec * 1000 + now.tv_usec / 1000;
 
-  unsigned long long dt = 0;
+  dt = 0;
 
   if (prev_time != 0)
     dt = curr_time - prev_time;
@@ -53,5 +53,47 @@ unsigned long long Time_Manager_Data::delta_time()
   prev_time = curr_time;
 
   return dt;
+}
+
+const unsigned long long Time_Manager_Data::dt_msec() const
+{
+  double aux = double(dt) / 1000.0;
+
+  unsigned long long sec = (unsigned long long) aux;
+
+  unsigned long long ret_val = (unsigned long long) aux - sec;
+
+  return ret_val;
+}
+
+const unsigned long long Time_Manager_Data::dt_sec() const
+{
+  unsigned long long sec = (unsigned long long) dt / 1000;
+
+  double aux = double(sec) / 60.0;
+
+  unsigned long long min = (unsigned long long) aux;
+
+  unsigned long long ret_val = sec - min * 60;
+
+  return ret_val;
+}
+
+const unsigned long long Time_Manager_Data::dt_min() const
+{
+  unsigned long long min = (unsigned long long) dt / (60 * 1000);
+
+  double aux = double(min) / 60.0;
+
+  unsigned long long hour = (unsigned long long) aux;
+
+  unsigned long long ret_val = min - hour * 60;
+
+  return ret_val;
+}
+
+const unsigned long long Time_Manager_Data::dt_hour() const
+{
+  return (unsigned long long) dt / (60 * 60 * 1000);
 }
 
