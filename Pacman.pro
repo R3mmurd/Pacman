@@ -1,6 +1,10 @@
 QMAKE_CXXFLAGS += -std=c++11
 
-INCLUDEPATH += Utilities
+INCLUDEPATH += Utilities \
+               ../Common
+
+LIBS += -L../Common \
+        -ltime
 
 CONFIG += warn_off
 
@@ -21,9 +25,7 @@ HEADERS += \
     telegram_sender.H \
     Utilities/def.H \
     Utilities/functions.H \
-    Utilities/vector_2D.H \
-    Utilities/time_manager.H \
-    Utilities/singleton.H
+    Utilities/vector_2D.H
 
 SOURCES += \
     element.C \
@@ -38,8 +40,7 @@ SOURCES += \
     telegram.C \
     telegram_sender.C \
     Utilities/functions.C \
-    Utilities/vector_2D.C \
-    Utilities/time_manager.C \
+    Utilities/vector_2D.C
 
 RESOURCES += \
     images.qrc
