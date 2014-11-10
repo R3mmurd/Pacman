@@ -38,6 +38,8 @@ protected:
   Time_Manager_Data();
 
 public:
+  void init();
+
   void reset();
 
   const unsigned long long & delta_time();

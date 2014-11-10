@@ -32,6 +32,15 @@ Time_Manager_Data::Time_Manager_Data()
   // Empty
 }
 
+void Time_Manager_Data::init()
+{
+  struct timeval now;
+
+  gettimeofday(&now, 0);
+
+  prev_time = now.tv_sec * 1000 + now.tv_usec / 1000;
+}
+
 void Time_Manager_Data::reset()
 {
   prev_time = 0;
@@ -61,7 +70,7 @@ const unsigned long long Time_Manager_Data::dt_msec() const
 
   unsigned long long sec = (unsigned long long) aux;
 
-  unsigned long long ret_val = (unsigned long long) aux - sec;
+  unsigned long long ret_val = dt - sec * 1000;
 
   return ret_val;
 }

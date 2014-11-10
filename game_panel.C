@@ -86,6 +86,7 @@ void Game_Panel::init_game()
 void Game_Panel::start_game()
 {
   status = Running;
+  Time_Manager::get_instance().init();
   timer.start(33);
 }
 
