@@ -113,6 +113,8 @@ void Pacman::select_next_target()
         }
 
       break;
+    default:
+      break;
     }
 
   set_tgt(get_src() + dir * SCALE);

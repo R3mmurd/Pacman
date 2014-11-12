@@ -26,12 +26,14 @@
 real compute_angle_between(const Vector_2D & p1, const Vector_2D & p2)
 {
   if (p1.get_x() == p2.get_x())
-    if (p1.get_y() > p2.get_y())
-      return RADIANS_2_DEGREES(A_3_PI_2);
-    else if (p1.get_y() < p2.get_y())
-      return RADIANS_2_DEGREES(A_PI_2);
-    else
-      return A_ZERO;
+    {
+      if (p1.get_y() > p2.get_y())
+        return RADIANS_2_DEGREES(A_3_PI_2);
+      else if (p1.get_y() < p2.get_y())
+        return RADIANS_2_DEGREES(A_PI_2);
+      else
+        return A_ZERO;
+    }
 
   real m = real(p2.get_y() - p1.get_y()) / real(p2.get_x() - p1.get_x());
 

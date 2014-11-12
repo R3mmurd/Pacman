@@ -39,7 +39,7 @@ Sprite::Sprite(const Sprite & sprite)
   : Element(sprite), num_images(sprite.num_images),
     curr_image_idx(sprite.curr_image_idx), images_speed(sprite.images_speed)
 {
-  for (int i = 0; i < num_images; ++i)
+  for (unsigned int i = 0; i < num_images; ++i)
     images_names[i] = sprite.images_names[i];
 }
 
@@ -97,7 +97,7 @@ Sprite & Sprite::operator = (const Sprite & sprite)
 
   num_images = sprite.num_images;
 
-  for (int i = 0; i < num_images; ++i)
+  for (unsigned int i = 0; i < num_images; ++i)
     images_names[i] = sprite.images_names[i];
 
   curr_image_idx = sprite.curr_image_idx;

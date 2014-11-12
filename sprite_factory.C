@@ -118,6 +118,9 @@ Sprite * Sprite_Factory_Data::build_sprite(QStringList & attributes)
       }
 
     break;
+
+    default:
+      throw std::logic_error("Error in sprite type");
     }
 }
 

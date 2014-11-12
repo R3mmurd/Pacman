@@ -105,7 +105,7 @@ public:
 
   void eat(const size_t &, const size_t &);
 
-  bool is_in_range(const int &, const int &) const;
+  bool is_in_range(const size_t &, const size_t &) const;
 
   Vector_2D position_in_map(const Vector_2D &);
 

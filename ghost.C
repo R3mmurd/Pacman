@@ -55,12 +55,13 @@ void Ghost::search_path()
 
 Ghost::Ghost(const real & _path_size_proportion)
   : Segment_Follower(),
-    path_size_proportion(_path_size_proportion), max_path_size_to_follow(0),
-    current_path_point(0), ptr_find_path_algorithm(nullptr), path_to_follow(),
+    max_path_size_to_follow(0), current_path_point(0),
+    path_size_proportion(_path_size_proportion),
+    ptr_find_path_algorithm(nullptr), path_to_follow(),
     status(Attacking)
 {
   id = next_id;
-  next_id << 1;
+  next_id = next_id << 1;
 
   listener.ptr_ghost = this;
   Telegram_Sender::get_instance().add_listener(&listener);

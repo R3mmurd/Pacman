@@ -6,8 +6,6 @@ INCLUDEPATH += Utilities \
 LIBS += -L../Common \
         -ltime
 
-CONFIG += warn_off
-
 HEADERS += \
     element.H \
     sprite.H \

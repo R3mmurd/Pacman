@@ -79,11 +79,11 @@ void Game_Map_Data::load()
 
   map = new Cell * [height];
 
-  for (int i = 0; i < height; ++i)
+  for (size_t i = 0; i < height; ++i)
     {
       map[i] = new Cell[width];
 
-      for (int j = 0; j < width; ++j)
+      for (size_t j = 0; j < width; ++j)
         {
           char c = in.read(1).at(0).toAscii();
 
@@ -108,8 +108,8 @@ void Game_Map_Data::draw(QPainter & painter)
   QPen pen = painter.pen();
   QBrush brush = painter.brush();
 
-  for (int i = 0; i < height; ++i)
-    for (int j = 0; j < width; ++j)
+  for (size_t i = 0; i < height; ++i)
+    for (size_t j = 0; j < width; ++j)
       {
         switch(map[i][j].element)
           {
@@ -177,7 +177,7 @@ void Game_Map_Data::tag(const size_t & i, const size_t & j, const int & value)
 bool Game_Map_Data::is_tagged(const size_t & i, const size_t & j,
                               const int & value) const
 {
-  return (map[i][j].tag & value == value);
+  return (map[i][j].tag & value) == value;
 }
 
 void Game_Map_Data::untag(const size_t & i, const size_t & j, const int & value)
@@ -226,9 +226,9 @@ void Game_Map_Data::eat(const size_t & i, const size_t & j)
     }
 }
 
-bool Game_Map_Data::is_in_range(const int & i, const int & j) const
+bool Game_Map_Data::is_in_range(const size_t & i, const size_t & j) const
 {
-  return i >= 0 and i < height and j >= 0 and j < width;
+  return i < height and j < width;
 }
 
 Vector_2D Game_Map_Data::position_in_map(const Vector_2D & position)

@@ -72,13 +72,13 @@ public:
   static Pacman * ptr_pacman;
 
 private:
-  int             id;
-  int             max_path_size_to_follow;
-  int             current_path_point;
-  real            path_size_proportion;
-  Find_Path *     ptr_find_path_algorithm;
+  int              id;
+  int              max_path_size_to_follow;
+  int              current_path_point;
+  real             path_size_proportion;
+  Find_Path *      ptr_find_path_algorithm;
   QList<Vector_2D> path_to_follow;
-  Status          status;
+  Status           status;
 
   void search_path();
 

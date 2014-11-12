@@ -46,7 +46,9 @@ public:
       case Pacman_Got_All_Cookies: return "You Win! :)";
       case Pacman_Got_Big_Cookie:  return "Run Away Ghosts!";
       case Pacman_Was_Killed:      return "You Lose! :(";
+      case Big_Cookie_Time_Over:   return "Take care Pacman!";
       }
+    return "";
   }
 };
 
