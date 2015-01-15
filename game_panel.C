@@ -134,10 +134,10 @@ void Game_Panel::paintEvent(QPaintEvent *)
   real dt = 0;
 
   if (status == Running)
-    dt = real(DELTA_TIME) / 1000.0;
-
-  if (status == Running)
-    Game_Map::get_instance().update(dt);
+    {
+      dt = real(DELTA_TIME) / 1000.0;
+      Game_Map::get_instance().update(dt);
+    }
 
   Game_Map::get_instance().draw(painter);
 
