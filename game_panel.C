@@ -131,20 +131,21 @@ void Game_Panel::paintEvent(QPaintEvent *)
 
   painter.fillRect(0, 0, SCALED_MAP_WIDTH, SCALED_MAP_HEIGHT, Qt::lightGray);
 
-  Game_Map::get_instance().draw(painter);
-
   real dt = 0;
 
   if (status == Running)
     dt = real(DELTA_TIME) / 1000.0;
 
+  if (status == Running)
+    Game_Map::get_instance().update(dt);
+
+  Game_Map::get_instance().draw(painter);
+
   for (Sprite * ptr_sprite : sprites)
     {
       if (status == Running)
-        {
-          ptr_sprite->update(dt);
-          Game_Map::get_instance().update(dt);
-        }
+        ptr_sprite->update(dt);
+          
       ptr_sprite->draw(painter);
     }
 

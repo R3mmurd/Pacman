@@ -21,6 +21,9 @@
 
   aledrums@gmail.com
 */
+
+# include <stdexcept>
+
 # include <sprite_factory.H>
 
 # include <pacman.H>
@@ -122,5 +125,7 @@ Sprite * Sprite_Factory_Data::build_sprite(QStringList & attributes)
     default:
       throw std::logic_error("Error in sprite type");
     }
+
+  return nullptr;
 }
 

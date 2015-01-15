@@ -59,7 +59,7 @@ class Game_Map_Data
 
   enum Status { Default_Status, Counting_Time_For_Big_Cookie };
 
-  static constexpr real Max_Time_For_Big_Cookie = 100.0;
+  static constexpr real Max_Time_For_Big_Cookie = 15.0;
 
   size_t  width;
   size_t  height;
