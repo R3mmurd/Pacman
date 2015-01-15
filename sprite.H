@@ -37,7 +37,7 @@ enum Sprite_Type
 
 class Sprite : public Element
 {
-  static constexpr int Max_Num_Images = 10;
+  static constexpr unsigned int Max_Num_Images = 10;
 
 protected:
   unsigned int num_images;
