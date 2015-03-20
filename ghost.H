@@ -50,7 +50,7 @@ class Ghost : public Segment_Follower
 
           ptr_ghost->status = Running_Away;
           old_speed = ptr_ghost->get_speed();
-          ptr_ghost->set_speed(50); // Todos se moverán a esta velocidad
+          ptr_ghost->set_speed(50);
           ptr_ghost->path_to_follow.empty();
           ptr_ghost->current_path_point = 0;
           ptr_ghost->max_path_size_to_follow = 0;

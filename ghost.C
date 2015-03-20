@@ -43,7 +43,7 @@ void Ghost::search_path()
   Vector_2D pacman_position = map.position_in_map(ptr_pacman->get_position());
 
   path_to_follow = ptr_find_path_algorithm->find_path(ghost_position,
-                                                        pacman_position, id);
+                                                      pacman_position, id);
   if (path_to_follow.empty())
     return;
 

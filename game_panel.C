@@ -32,8 +32,6 @@
 # include <sprite_factory.H>
 # include <telegram_sender.H>
 
-# include <time_manager.H>
-
 Game_Panel::Game_Panel(QWidget * parent)
   : QWidget(parent), ptr_pacman(nullptr)
 {
@@ -61,7 +59,7 @@ void Game_Panel::init_game()
   catch(const std::exception & e)
   {
     QMessageBox::critical(this, "Error", e.what());
-    exit(1);
+    QApplication::exit(EXIT_FAILURE);
   }
 
   Telegram_Sender::get_instance().clear();
@@ -74,8 +72,8 @@ void Game_Panel::init_game()
 
   if (sprites.empty())
     {
-      QMessageBox::critical(this, "Error", "No hay pacman en el mapa");
-      exit(2);
+      QMessageBox::critical(this, "Error", "There is not Pacman in the map");
+      QApplication::exit(EXIT_FAILURE);
     }
 
   status = Init;
@@ -86,8 +84,8 @@ void Game_Panel::init_game()
 void Game_Panel::start_game()
 {
   status = Running;
-  Time_Manager::get_instance().init();
   timer.start(33);
+  time.start();
 }
 
 void Game_Panel::stop_game(const int & num_message)
@@ -95,7 +93,6 @@ void Game_Panel::stop_game(const int & num_message)
   timer.stop();
   status = Reinit;
   message = Message_String::get(num_message);
-  Time_Manager::get_instance().reset();
 }
 
 void Game_Panel::update()
@@ -135,7 +132,7 @@ void Game_Panel::paintEvent(QPaintEvent *)
 
   if (status == Running)
     {
-      dt = real(DELTA_TIME) / 1000.0;
+      dt = real(time.elapsed()) / 1000.0;
       Game_Map::get_instance().update(dt);
     }
 
@@ -161,6 +158,8 @@ void Game_Panel::paintEvent(QPaintEvent *)
                         (-dy + height() / 2) - (size.height() / 2)), size);
       painter.drawText(rect, Qt::TextSingleLine, message);
     }
+
+  time.start();
 }
 
 void Game_Panel::keyPressEvent(QKeyEvent * evt)
@@ -207,10 +206,10 @@ void Game_Panel::load_sprites()
 
   QTextStream in(&file);
 
-  // Primera línea debe ser el pacman principal
+  // The first line of the file must be Pacman
   QString line = in.readLine();
 
-  // No haré más nada, pues los fantasmas trabajan en función del pacman
+  // If the first line is not Pacman, I can't play the game.
   if (line.at(0) == '#' or line.at(0) != '0')
     return;
 

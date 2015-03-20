@@ -3,9 +3,6 @@ QMAKE_CXXFLAGS += -std=c++11
 INCLUDEPATH += Utilities \
                ../Common
 
-LIBS += -L../Common \
-        -ltime
-
 HEADERS += \
     element.H \
     sprite.H \

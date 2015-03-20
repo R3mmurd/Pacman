@@ -45,6 +45,8 @@ class Game_Panel : public QWidget
 
   QString message;
 
+  QTime time;
+
   QTimer timer;
 
   void load_sprites();
@@ -82,12 +84,7 @@ protected:
   void closeEvent(QCloseEvent *);
 
 public:
-  Game_Panel(QWidget * parent = 0);
-
-signals:
-
-public slots:
-
+  Game_Panel(QWidget * parent = nullptr);
 };
 
 #endif // GAME_PANEL_H
