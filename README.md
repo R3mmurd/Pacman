@@ -16,4 +16,4 @@ System requeriments:
 FIXME list:
 - Screen scrolling is not working when map is smaller than panel.
 
-Author: Alejandro J. Mujica (aledrums at gmail dot com).
+Author: Alejandro J. Mujica (aledrums@gmail.com).
