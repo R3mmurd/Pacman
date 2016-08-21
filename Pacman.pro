@@ -1,4 +1,8 @@
-QMAKE_CXXFLAGS += -std=c++11
+QMAKE_CXX = clang++
+
+CONFIG += c++14
+
+QT += core widgets
 
 INCLUDEPATH += Utilities \
                ../Common
@@ -15,6 +19,7 @@ HEADERS += \
     ghost.H \
     find_path.H \
     find_path_breadth_first.H \
+    find_path_depth_first.H  \
     telegram.H \
     telegram_listener.H \
     telegram_sender.H \

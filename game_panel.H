@@ -24,8 +24,9 @@
 # ifndef GAME_PANEL_H
 # define GAME_PANEL_H
 
-# include <QtGui>
+# include <QWidget>
 # include <QList>
+# include <QTime>
 # include <QTimer>
 
 # include <pacman.H>
@@ -35,7 +36,7 @@ class Game_Panel : public QWidget
 {
   Q_OBJECT
  
-  enum Status { Init, Running, Reinit };
+  enum class Status { Init, Running, Reinit };
 
   Status status;
 

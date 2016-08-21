@@ -23,9 +23,12 @@
 */
 # include <cassert>
 
+# include <QApplication>
 # include <QPainter>
 # include <QMessageBox>
 # include <QFile>
+# include <QKeyEvent>
+# include <QTextStream>
 
 # include <game_panel.H>
 # include <game_map.H>
@@ -76,14 +79,14 @@ void Game_Panel::init_game()
       QApplication::exit(EXIT_FAILURE);
     }
 
-  status = Init;
+  status = Status::Init;
 
   message = "Press any key to start.";
 }
 
 void Game_Panel::start_game()
 {
-  status = Running;
+  status = Status::Running;
   timer.start(33);
   time.start();
 }
@@ -91,7 +94,7 @@ void Game_Panel::start_game()
 void Game_Panel::stop_game(const int & num_message)
 {
   timer.stop();
-  status = Reinit;
+  status = Status::Reinit;
   message = Message_String::get(num_message);
 }
 
@@ -130,7 +133,7 @@ void Game_Panel::paintEvent(QPaintEvent *)
 
   real dt = 0;
 
-  if (status == Running)
+  if (status == Status::Running)
     {
       dt = real(time.elapsed()) / 1000.0;
       Game_Map::get_instance().update(dt);
@@ -140,13 +143,13 @@ void Game_Panel::paintEvent(QPaintEvent *)
 
   for (Sprite * ptr_sprite : sprites)
     {
-      if (status == Running)
+      if (status == Status::Running)
         ptr_sprite->update(dt);
           
       ptr_sprite->draw(painter);
     }
 
-  if (status != Running)
+  if (status != Status::Running)
     {
       painter.setPen(Qt::red);
       QFont font("Helvetica");
@@ -165,12 +168,12 @@ void Game_Panel::paintEvent(QPaintEvent *)
 void Game_Panel::keyPressEvent(QKeyEvent * evt)
 {
 
-  if (status == Init)
+  if (status == Status::Init)
     start_game();
-  else if (status == Reinit)
+  else if (status == Status::Reinit)
     {
       init_game();
-      status = Init;
+      status = Status::Init;
       repaint();
       return;
     }

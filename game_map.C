@@ -85,7 +85,7 @@ void Game_Map_Data::load()
 
       for (size_t j = 0; j < width; ++j)
         {
-          char c = in.read(1).at(0).toAscii();
+          char c = in.read(1).at(0).toLatin1();
 
           if (c == '\n')
             {
