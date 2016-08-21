@@ -10,8 +10,7 @@ ghosts will appear.
 System requeriments:
 
 - GNU/Linux Operating System
-- QT4
-- qt4-qmake
+- Qt5
 
 FIXME list:
 - Screen scrolling is not working when map is smaller than panel.
