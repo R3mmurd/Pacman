@@ -4,8 +4,7 @@ CONFIG += c++14
 
 QT += core widgets
 
-INCLUDEPATH += Utilities \
-               ../Common
+INCLUDEPATH += Utilities
 
 HEADERS += \
     element.H \
@@ -25,7 +24,8 @@ HEADERS += \
     telegram_sender.H \
     Utilities/def.H \
     Utilities/functions.H \
-    Utilities/vector_2D.H
+    Utilities/vector_2D.H \
+    Utilities/singleton.H
 
 SOURCES += \
     element.C \

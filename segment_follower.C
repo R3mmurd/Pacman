@@ -126,7 +126,6 @@ void Segment_Follower::update(const real & dt)
 
 void Segment_Follower::draw(QPainter & painter)
 {
-
   QPoint pos(get_position().get_x(), get_position().get_y());
 
   QMatrix prev_matrix = painter.matrix();
