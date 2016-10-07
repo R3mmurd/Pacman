@@ -28,7 +28,9 @@
 
 # include <find_path.H>
 
-class Find_Path_Breadth_First_Data : public Find_Path
+class Find_Path_Breadth_First :
+    public Singleton<Find_Path_Breadth_First>,
+    public Find_Path
 {
   void insert_in_queue(const Vector_2D & p,
                        QQueue<QList<Vector_2D>> & path_queue,
@@ -92,8 +94,6 @@ public:
     return current_path;
   }
 };
-
-using Find_Path_Breadth_First = Singleton<Find_Path_Breadth_First_Data>;
 
 # endif // FIND_PATH_BREADTH_FIRST_H
 

@@ -29,13 +29,11 @@
 # include <singleton.H>
 # include <sprite.H>
 
-class Sprite_Factory_Data
+class Sprite_Factory : public Singleton<Sprite_Factory>
 {
 public:
   Sprite * build_sprite(QStringList &);
 };
-
-using Sprite_Factory = Singleton<Sprite_Factory_Data>;
 
 # endif // SPRITE_FACTORY_H
 

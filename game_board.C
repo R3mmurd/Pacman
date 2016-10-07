@@ -29,23 +29,23 @@
 # include <QTextStream>
 # include <QPainter>
 
-# include <game_map.H>
+# include <game_board.H>
 # include <telegram_sender.H>
 # include <messages.H>
 
-Game_Map_Data::Game_Map_Data()
+Game_Board::Game_Board()
   : width(0), height(0), scale(0.0), map(nullptr), num_cookies(0),
     status(Default_Status)
 {
   // Empty
 }
 
-Game_Map_Data::~Game_Map_Data()
+Game_Board::~Game_Board()
 {
   destroy_map();
 }
 
-void Game_Map_Data::load()
+void Game_Board::load()
 {
   destroy_map();
 
@@ -103,7 +103,7 @@ void Game_Map_Data::load()
   file.close();
 }
 
-void Game_Map_Data::draw(QPainter & painter)
+void Game_Board::draw(QPainter & painter)
 {
   QPen pen = painter.pen();
   QBrush brush = painter.brush();
@@ -136,7 +136,7 @@ void Game_Map_Data::draw(QPainter & painter)
   painter.setBrush(brush);
 }
 
-void Game_Map_Data::destroy_map()
+void Game_Board::destroy_map()
 {
   if (map == nullptr)
     return;
@@ -149,57 +149,57 @@ void Game_Map_Data::destroy_map()
   num_cookies = 0;
 }
 
-char & Game_Map_Data::element_at(const size_t & i, const size_t & j)
+char & Game_Board::element_at(const size_t & i, const size_t & j)
 {
   return map[i][j].element;
 }
 
-const size_t & Game_Map_Data::get_width() const
+const size_t & Game_Board::get_width() const
 {
   return width;
 }
 
-const size_t & Game_Map_Data::get_height() const
+const size_t & Game_Board::get_height() const
 {
   return height;
 }
 
-const real & Game_Map_Data::get_scale() const
+const real & Game_Board::get_scale() const
 {
   return scale;
 }
 
-void Game_Map_Data::tag(const size_t & i, const size_t & j, const int & value)
+void Game_Board::tag(const size_t & i, const size_t & j, const int & value)
 {
   map[i][j].tag |= value;
 }
 
-bool Game_Map_Data::is_tagged(const size_t & i, const size_t & j,
+bool Game_Board::is_tagged(const size_t & i, const size_t & j,
                               const int & value) const
 {
   return (map[i][j].tag & value) == value;
 }
 
-void Game_Map_Data::untag(const size_t & i, const size_t & j, const int & value)
+void Game_Board::untag(const size_t & i, const size_t & j, const int & value)
 {
   map[i][j].tag &= ~value;
 }
 
-void Game_Map_Data::reset_tag(const int & value)
+void Game_Board::reset_tag(const int & value)
 {
   for (size_t i = 0; i < height; ++i)
     for (size_t j = 0; j < width; ++j)
       untag(i, j, value);
 }
 
-void Game_Map_Data::reset_all_tags()
+void Game_Board::reset_all_tags()
 {
   for (size_t i = 0; i < height; ++i)
     for (size_t j = 0; j < width; ++j)
       map[i][j].tag = 0;
 }
 
-void Game_Map_Data::eat(const size_t & i, const size_t & j)
+void Game_Board::eat(const size_t & i, const size_t & j)
 {
   if (map[i][j].element == ' ')
     return;
@@ -226,12 +226,12 @@ void Game_Map_Data::eat(const size_t & i, const size_t & j)
     }
 }
 
-bool Game_Map_Data::is_in_range(const size_t & i, const size_t & j) const
+bool Game_Board::is_in_range(const size_t & i, const size_t & j) const
 {
   return i < height and j < width;
 }
 
-Vector_2D Game_Map_Data::position_in_map(const Vector_2D & position)
+Vector_2D Game_Board::position_in_map(const Vector_2D & position)
 {
   int x = int(position.get_x() / SCALE);
   int y = int(position.get_y() / SCALE);
@@ -239,7 +239,7 @@ Vector_2D Game_Map_Data::position_in_map(const Vector_2D & position)
   return Vector_2D(x, y);
 }
 
-Vector_2D Game_Map_Data::real_position(const Vector_2D & position)
+Vector_2D Game_Board::real_position(const Vector_2D & position)
 {
   int x = position.get_x() * SCALE + SCALE / 2.0;
   int y = position.get_y() * SCALE + SCALE / 2.0;
@@ -247,7 +247,7 @@ Vector_2D Game_Map_Data::real_position(const Vector_2D & position)
   return Vector_2D(x, y);
 }
 
-void Game_Map_Data::update(const real & dt)
+void Game_Board::update(const real & dt)
 {
   if (status == Default_Status)
     return;

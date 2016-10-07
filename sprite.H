@@ -52,7 +52,7 @@ public:
 
   Sprite(Sprite &&);
 
-  virtual ~Sprite();
+  ~Sprite();
 
   void add_image(const QString &);
 
@@ -62,7 +62,7 @@ public:
 
   virtual void draw(QPainter &);
 
-  virtual void update(const real &);
+  void update(const real &) override;
 
   virtual Sprite_Type type() const = 0;
 };

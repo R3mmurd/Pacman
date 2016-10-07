@@ -23,22 +23,22 @@
 */
 # include <telegram_sender.H>
 
-void Telegram_Sender_Data::add_listener(Telegram_Listener * listener)
+void Telegram_Sender::add_listener(Telegram_Listener * listener)
 {
   listeners.append(listener);
 }
 
-void Telegram_Sender_Data::del_listener(Telegram_Listener * listener)
+void Telegram_Sender::del_listener(Telegram_Listener * listener)
 {
   listeners.removeOne(listener);
 }
 
-void Telegram_Sender_Data::clear()
+void Telegram_Sender::clear()
 {
   listeners.clear();
 }
 
-void Telegram_Sender_Data::send_global_message(void * sender,
+void Telegram_Sender::send_global_message(void * sender,
                                                const int & message,
                                                void * extra_info)
 {
@@ -48,7 +48,7 @@ void Telegram_Sender_Data::send_global_message(void * sender,
     listener->on_message_received(telegram);
 }
 
-void Telegram_Sender_Data::send_direct_message(void * sender,
+void Telegram_Sender::send_direct_message(void * sender,
                                                const int & message,
                                                Telegram_Listener * listener,
                                                void * extra_info)

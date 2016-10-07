@@ -21,30 +21,32 @@
 
   aledrums@gmail.com
 */
-# ifndef GAME_MAP_H
-# define GAME_MAP_H
+# ifndef GAME_BOARD_H
+# define GAME_BOARD_H
 
 # include <singleton.H>
 # include <vector_2D.H>
 
-# define IS_IN_RANGE(i, j)     (Game_Map::get_instance().is_in_range(i, j))
-# define CELL(i, j)            (Game_Map::get_instance().element_at(i, j))
-# define EAT(i, j)             (Game_Map::get_instance().eat(i, j))
-# define SCALE                 (Game_Map::get_instance().get_scale())
-# define MAP_WIDTH             (Game_Map::get_instance().get_width())
-# define MAP_HEIGHT            (Game_Map::get_instance().get_height())
+# define IS_IN_RANGE(i, j)     (Game_Board::get_instance().is_in_range(i, j))
+# define CELL(i, j)            (Game_Board::get_instance().element_at(i, j))
+# define EAT(i, j)             (Game_Board::get_instance().eat(i, j))
+# define SCALE                 (Game_Board::get_instance().get_scale())
+# define MAP_WIDTH             (Game_Board::get_instance().get_width())
+# define MAP_HEIGHT            (Game_Board::get_instance().get_height())
 # define SCALED_MAP_WIDTH      (MAP_WIDTH * SCALE)
 # define SCALED_MAP_HEIGHT     (MAP_HEIGHT * SCALE)
-# define TAG(i, j, val)        (Game_Map::get_instance().tag(i, j, val))
-# define UNTAG(i, j, val)      (Game_Map::get_instance().untag(i, j, val))
-# define IS_TAGGED(i, j, val)  (Game_Map::get_instance().is_tagged(i, j, val))
-# define RESET_TAG(val)        (Game_Map::get_instance().reset_tag(val))
-# define RESET_ALL_TAGS        (Game_Map::get_instance().reset_all_tags())
+# define TAG(i, j, val)        (Game_Board::get_instance().tag(i, j, val))
+# define UNTAG(i, j, val)      (Game_Board::get_instance().untag(i, j, val))
+# define IS_TAGGED(i, j, val)  (Game_Board::get_instance().is_tagged(i, j, val))
+# define RESET_TAG(val)        (Game_Board::get_instance().reset_tag(val))
+# define RESET_ALL_TAGS        (Game_Board::get_instance().reset_all_tags())
 
 class QPainter;
 
-class Game_Map_Data
+class Game_Board : public Singleton<Game_Board>
 {
+  friend class Singleton<Game_Board>;
+
   struct Cell
   {
     char element;
@@ -72,12 +74,12 @@ class Game_Map_Data
   void destroy_map();
 
 protected:
-  Game_Map_Data();
+  Game_Board();
 
 public:
   enum Direction { North, South, East, West, Num_Directions };
 
-  ~Game_Map_Data();
+  ~Game_Board();
 
   void load();
 
@@ -114,7 +116,5 @@ public:
   void update(const real &);
 };
 
-using Game_Map = Singleton<Game_Map_Data>;
-
-# endif // GAME_MAP_H
+# endif // GAME_BOARD_H
 

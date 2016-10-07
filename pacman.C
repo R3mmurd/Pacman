@@ -26,24 +26,24 @@
 bool Pacman::may_go_straight() const
 {
   Vector_2D position_in_map =
-    Game_Map::get_instance().position_in_map(get_position());
+    Game_Board::get_instance().position_in_map(get_position());
 
-  if (curr_direction == Game_Map::North and
+  if (curr_direction == Game_Board::North and
       CELL(position_in_map.get_y() - 1, position_in_map.get_x()) != '#' and
       IS_IN_RANGE(position_in_map.get_y() - 1, position_in_map.get_x()))
     return true;
 
-  if (curr_direction == Game_Map::South and
+  if (curr_direction == Game_Board::South and
       CELL(position_in_map.get_y() + 1, position_in_map.get_x()) != '#' and
       IS_IN_RANGE(position_in_map.get_y() + 1, position_in_map.get_x()))
     return true;
 
-  if (curr_direction == Game_Map::East and
+  if (curr_direction == Game_Board::East and
       CELL(position_in_map.get_y(), position_in_map.get_x() + 1) != '#' and
       IS_IN_RANGE(position_in_map.get_y(), position_in_map.get_x() + 1))
     return true;
 
-  if (curr_direction == Game_Map::West and
+  if (curr_direction == Game_Board::West and
       CELL(position_in_map.get_y(), position_in_map.get_x() - 1) != '#' and
       IS_IN_RANGE(position_in_map.get_y(), position_in_map.get_x() - 1))
     return true;
@@ -53,7 +53,7 @@ bool Pacman::may_go_straight() const
 
 Pacman::Pacman()
   : Segment_Follower(),
-    curr_direction(Game_Map::Num_Directions), next_direction(curr_direction)
+    curr_direction(Game_Board::Num_Directions), next_direction(curr_direction)
 {
   // Empty
 }
@@ -69,11 +69,11 @@ void Pacman::select_next_target()
     }
 
   Vector_2D position_in_map =
-    Game_Map::get_instance().position_in_map(get_src());
+    Game_Board::get_instance().position_in_map(get_src());
 
   switch (next_direction)
     {
-    case Game_Map::North:
+    case Game_Board::North:
       if (CELL(position_in_map.get_y() - 1, position_in_map.get_x()) != '#')
         {
           dir.set_x(0);
@@ -84,7 +84,7 @@ void Pacman::select_next_target()
 
       break;
 
-    case Game_Map::South:
+    case Game_Board::South:
       if (CELL(position_in_map.get_y() + 1, position_in_map.get_x()) != '#')
         {
           dir.set_x(0);
@@ -94,7 +94,7 @@ void Pacman::select_next_target()
 
       break;
 
-    case Game_Map::East:
+    case Game_Board::East:
       if (CELL(position_in_map.get_y(), position_in_map.get_x() + 1) != '#')
         {
           dir.set_x(1);
@@ -104,7 +104,7 @@ void Pacman::select_next_target()
 
       break;
 
-    case Game_Map::West:
+    case Game_Board::West:
       if (CELL(position_in_map.get_y(), position_in_map.get_x() - 1) != '#')
         {
           dir.set_x(-1);
@@ -120,7 +120,7 @@ void Pacman::select_next_target()
   set_tgt(get_src() + dir * SCALE);
 }
 
-void Pacman::change_direction(const Game_Map::Direction & _direction)
+void Pacman::change_direction(const Game_Board::Direction & _direction)
 {
   next_direction = _direction;
 }
@@ -128,7 +128,7 @@ void Pacman::change_direction(const Game_Map::Direction & _direction)
 void Pacman::handle_target_arrive()
 {
   Vector_2D position_in_map =
-    Game_Map::get_instance().position_in_map(get_position());
+    Game_Board::get_instance().position_in_map(get_position());
   EAT(position_in_map.get_y(), position_in_map.get_x());
 }
 

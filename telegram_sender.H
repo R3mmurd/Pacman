@@ -30,7 +30,7 @@
 # include <telegram_listener.H>
 # include <messages.H>
 
-class Telegram_Sender_Data
+class Telegram_Sender : public Singleton<Telegram_Sender>
 {
   QList<Telegram_Listener *> listeners;
 
@@ -46,8 +46,6 @@ public:
   void send_direct_message(void *, const int &, Telegram_Listener * receiver,
                            void * extra_info = nullptr);
 };
-
-using Telegram_Sender = Singleton<Telegram_Sender_Data>;
 
 # endif // TELEGRAM_SENDER_H
 

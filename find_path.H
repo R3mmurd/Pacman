@@ -26,7 +26,7 @@
 
 # include <QList>
 
-# include <game_map.H>
+# include <game_board.H>
 
 enum Path_Find_Type
 {

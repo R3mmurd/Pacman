@@ -27,7 +27,7 @@
 
 # include <sprite.H>
 # include <image_buffer.H>
-# include <game_map.H>
+# include <game_board.H>
 
 Sprite::Sprite()
   : Element(), num_images(0), curr_image_idx(0), images_speed(30)

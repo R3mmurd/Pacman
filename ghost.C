@@ -36,7 +36,7 @@ void Ghost::search_path()
   if (ptr_pacman == nullptr)
     return;
 
-  Game_Map & map = Game_Map::get_instance();
+  Game_Board & map = Game_Board::get_instance();
 
   Vector_2D ghost_position = map.position_in_map(get_position());
 
@@ -67,6 +67,11 @@ Ghost::Ghost(const real & _path_size_proportion)
   Telegram_Sender::get_instance().add_listener(&listener);
 }
 
+void Ghost::handle_target_arrive()
+{
+  // Empty
+}
+
 void Ghost::select_next_target()
 {
   if (status == Attacking)
@@ -79,14 +84,14 @@ void Ghost::select_next_target()
 
       Vector_2D _tgt = path_to_follow.takeFirst();
 
-      set_tgt(Game_Map::get_instance().real_position(_tgt));
+      set_tgt(Game_Board::get_instance().real_position(_tgt));
 
       ++current_path_point;
     }
   else
     {
       Vector_2D position_in_map =
-        Game_Map::get_instance().position_in_map(get_position());
+        Game_Board::get_instance().position_in_map(get_position());
 
       QList<Vector_2D> targets;
 
@@ -119,7 +124,7 @@ void Ghost::select_next_target()
       real max = 0;
 
       Vector_2D pacman_position =
-        Game_Map::get_instance().position_in_map(ptr_pacman->get_position());
+        Game_Board::get_instance().position_in_map(ptr_pacman->get_position());
 
       for (const Vector_2D & t : targets)
         {
@@ -130,7 +135,7 @@ void Ghost::select_next_target()
           if (d > max)
             {
               max = d;
-              set_tgt(Game_Map::get_instance().real_position(t));
+              set_tgt(Game_Board::get_instance().real_position(t));
             }
         }
         

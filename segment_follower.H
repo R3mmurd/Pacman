@@ -58,11 +58,11 @@ public:
 
   virtual void init(const Vector_2D &, const real &);
 
-  virtual void draw(QPainter &);
+  void draw(QPainter &) override;
 
-  virtual void update(const real &);
+  void update(const real &) override;
 
-  virtual void handle_target_arrive();
+  virtual void handle_target_arrive() = 0;
 
   virtual void select_next_target() = 0;
 

@@ -37,25 +37,30 @@
  *  Usage example:
  *
  *  \code{.cpp}
- *  class Base_Class
+ *  class MySingletonClass : public Singleton<MySingletonClass>
  *  {
- *    // Any attributes and methods;
+ *    friend class Singleton<MySingletonClass>;
+ *
+ *    // If you need default constructor, make it protected.
+ *  protected:
+ *    MySingletonClass() { }
+ *
+ *    // Any attributes or methods;
  *  };
  *
- *  using My_Singleton_Class = Singleton<Base_Class>;
+ *  MySingletonClass * ptr_instance = MySingletonClass::get_ptr_instance();
  *
- *  My_Singleton_Class * ptr_instance = My_Singleton_Class::get_ptr_instance();
- *
- *  My_Singleton_Class & instance = My_Singleton_Class::get_instance();
+ *  MySingletonClass & instance = MySingletonClass::get_instance();
  *  \endcode
  *
  *  @author: Alejandro J. Mujica
  */         
 template <typename T>
-class Singleton : public T
+class Singleton
 {
   static std::unique_ptr<Singleton<T>> instance;
 
+protected:
   Singleton()
   {
     // Empty
@@ -67,23 +72,28 @@ class Singleton : public T
 
 public:
 
+  virtual ~Singleton()
+  {
+    // Empty
+  }
+
   /** Get a pointer to instance.
    *
    *  @return A pointer to instance.
    */
-  static Singleton<T> * get_ptr_instance()
+  static T * get_ptr_instance()
   {
     if (instance.get() == nullptr)
-      instance = std::unique_ptr<Singleton<T>>(new Singleton<T>);
+      instance = std::unique_ptr<Singleton<T>>(new T());
 
-    return instance.get();
+    return static_cast<T *>(instance.get());
   }
 
   /** Get a reference to instance.
    *
    *  @return A reference to instance.
    */
-  static Singleton<T> & get_instance()
+  static T & get_instance()
   {
     return *get_ptr_instance();
   }

@@ -85,11 +85,13 @@ private:
 public:
   Ghost(const real & _path_size_proportion = 1.0);
 
-  void select_next_target();
+  void handle_target_arrive() override;
 
-  Sprite_Type type() const;
+  void select_next_target() override;
 
-  void update(const real &);
+  Sprite_Type type() const override;
+
+  void update(const real &) override;
 
   Find_Path *& find_path_algorithm() { return ptr_find_path_algorithm; }
 };

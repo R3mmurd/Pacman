@@ -30,7 +30,7 @@
 
 # include <singleton.H>
 
-class Image_Buffer_Data
+class Image_Buffer : public Singleton<Image_Buffer>
 {
   QMap<QString, std::shared_ptr<QPixmap>> buffer;
 
@@ -59,8 +59,6 @@ public:
     return image_for(name);
   }
 };
-
-typedef Singleton<Image_Buffer_Data> Image_Buffer;
 
 # endif // IMAGE_BUFFER_H
 

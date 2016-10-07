@@ -24,7 +24,7 @@
 # include <QPainter>
 
 # include <segment_follower.H>
-# include <game_map.H>
+# include <game_board.H>
 
 void Segment_Follower::compute_velocity()
 {
@@ -142,7 +142,7 @@ void Segment_Follower::draw(QPainter & painter)
 
 void Segment_Follower::init(const Vector_2D & init_pos, const real & _speed)
 {
-  set_position(Game_Map::get_instance().real_position(init_pos));
+  set_position(Game_Board::get_instance().real_position(init_pos));
 
   set_inverse_mass(0.1);
   speed = _speed;
@@ -151,11 +151,6 @@ void Segment_Follower::init(const Vector_2D & init_pos, const real & _speed)
   select_next_target();
 
   compute_velocity();
-}
-
-void Segment_Follower::handle_target_arrive()
-{
-  // Empty
 }
 
 Segment_Follower & Segment_Follower::operator = (const Segment_Follower & sf)

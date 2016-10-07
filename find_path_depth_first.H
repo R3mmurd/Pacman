@@ -26,7 +26,9 @@
 
 # include <find_path.H>
 
-class Find_Path_Depth_First_Data : public Find_Path
+class Find_Path_Depth_First :
+    public Singleton<Find_Path_Depth_First>,
+    public Find_Path
 {
   bool find_path_rec(const Vector_2D & src, const Vector_2D & tgt,
                      const int & tag, QList<Vector_2D> & path)
@@ -134,8 +136,6 @@ public:
     return path;
   }
 };
-
-using Find_Path_Depth_First = Singleton<Find_Path_Depth_First_Data>;
 
 # endif // FIND_PATH_DEPTH_FIRST_H
 

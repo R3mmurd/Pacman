@@ -11,7 +11,6 @@ HEADERS += \
     sprite.H \
     segment_follower.H \
     game_panel.H \
-    game_map.H \
     pacman.H \
     image_buffer.H \
     sprite_factory.H \
@@ -25,7 +24,8 @@ HEADERS += \
     Utilities/def.H \
     Utilities/functions.H \
     Utilities/vector_2D.H \
-    Utilities/singleton.H
+    Utilities/singleton.H \
+    game_board.H
 
 SOURCES += \
     element.C \
@@ -33,14 +33,14 @@ SOURCES += \
     main.C \
     segment_follower.C \
     game_panel.C \
-    game_map.C \
     pacman.C \
     sprite_factory.C \
     ghost.C \
     telegram.C \
     telegram_sender.C \
     Utilities/functions.C \
-    Utilities/vector_2D.C
+    Utilities/vector_2D.C \
+    game_board.C
 
 RESOURCES += \
     images.qrc

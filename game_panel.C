@@ -31,7 +31,7 @@
 # include <QTextStream>
 
 # include <game_panel.H>
-# include <game_map.H>
+# include <game_board.H>
 # include <sprite_factory.H>
 # include <telegram_sender.H>
 
@@ -57,7 +57,7 @@ void Game_Panel::init_game()
 {
   try
   {
-    Game_Map::get_instance().load();
+    Game_Board::get_instance().load();
   }
   catch(const std::exception & e)
   {
@@ -136,10 +136,10 @@ void Game_Panel::paintEvent(QPaintEvent *)
   if (status == Status::Running)
     {
       dt = real(time.elapsed()) / 1000.0;
-      Game_Map::get_instance().update(dt);
+      Game_Board::get_instance().update(dt);
     }
 
-  Game_Map::get_instance().draw(painter);
+  Game_Board::get_instance().draw(painter);
 
   for (Sprite * ptr_sprite : sprites)
     {
@@ -181,16 +181,16 @@ void Game_Panel::keyPressEvent(QKeyEvent * evt)
   switch (evt->key())
     {
     case Qt::Key_Up:
-      ptr_pacman->change_direction(Game_Map::North);
+      ptr_pacman->change_direction(Game_Board::North);
       break;
     case Qt::Key_Down:
-      ptr_pacman->change_direction(Game_Map::South);
+      ptr_pacman->change_direction(Game_Board::South);
       break;
     case Qt::Key_Left:
-      ptr_pacman->change_direction(Game_Map::West);
+      ptr_pacman->change_direction(Game_Board::West);
       break;
     case Qt::Key_Right:
-      ptr_pacman->change_direction(Game_Map::East);
+      ptr_pacman->change_direction(Game_Board::East);
       break;
     }
 }

@@ -32,7 +32,7 @@
 # include <find_path_breadth_first.H>
 # include <find_path_depth_first.H>
 
-Sprite * Sprite_Factory_Data::build_sprite(QStringList & attributes)
+Sprite * Sprite_Factory::build_sprite(QStringList & attributes)
 {
   int type = attributes.at(0).toInt();
 
