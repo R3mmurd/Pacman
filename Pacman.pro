@@ -2,7 +2,7 @@ QMAKE_CXX = clang++
 
 CONFIG += c++14
 
-QT += core widgets
+QT += core widgets multimedia
 
 INCLUDEPATH += Utilities
 
@@ -25,7 +25,8 @@ HEADERS += \
     Utilities/functions.H \
     Utilities/vector_2D.H \
     Utilities/singleton.H \
-    game_board.H
+    game_board.H \
+    audio.H
 
 SOURCES += \
     element.C \
@@ -40,7 +41,8 @@ SOURCES += \
     telegram_sender.C \
     Utilities/functions.C \
     Utilities/vector_2D.C \
-    game_board.C
+    game_board.C \
+    audio.C
 
 RESOURCES += \
     images.qrc

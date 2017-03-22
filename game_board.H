@@ -81,6 +81,8 @@ public:
 
   ~Game_Board();
 
+  Status get_status();
+
   void load();
 
   void draw(QPainter &);

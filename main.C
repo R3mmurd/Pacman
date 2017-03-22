@@ -28,6 +28,8 @@ int main(int argc, char * argv[])
 {
   QApplication app(argc, argv);
 
+  Audio::get_instance();
+
   Game_Panel panel;
   panel.show();
 

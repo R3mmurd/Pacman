@@ -29,6 +29,8 @@
 # include <QTime>
 # include <QTimer>
 
+# include <audio.H>
+
 # include <pacman.H>
 # include <ghost.H>
 
@@ -61,7 +63,14 @@ class Game_Panel : public QWidget
       const int & message = telegram.get_message();
 
       if (message == Pacman_Was_Killed or message == Pacman_Got_All_Cookies)
-        panel->stop_game(message);
+        {
+          panel->stop_game(message);
+          Audio::get_instance().stop_intermission();
+          Audio::get_instance().stop_chomp();
+        }
+
+      if (message == Pacman_Was_Killed)
+        Audio::get_instance().play_death();
     };
 
   } listener;

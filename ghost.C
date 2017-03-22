@@ -24,6 +24,7 @@
 # include <ghost.H>
 # include <messages.H>
 # include <telegram_sender.H>
+# include <audio.H>
 
 int Ghost::next_id = 1;
 
@@ -137,8 +138,7 @@ void Ghost::select_next_target()
               max = d;
               set_tgt(Game_Board::get_instance().real_position(t));
             }
-        }
-        
+        }        
     }
 }
 
@@ -158,8 +158,14 @@ void Ghost::update(const real & dt)
                                                             Pacman_Was_Killed);
       else
         {
-          status = Attacking;
+          Audio::get_instance().play_eat_ghost();
           init(Vector_2D(1, 1), listener.old_speed);
+          listener.old_speed = get_speed();
+          status = Running_Away;
+          set_speed(50);
+          path_to_follow.empty();
+          current_path_point = 0;
+          max_path_size_to_follow = 0;
         }
     }
 

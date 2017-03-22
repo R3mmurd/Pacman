@@ -32,6 +32,7 @@
 # include <game_board.H>
 # include <telegram_sender.H>
 # include <messages.H>
+# include <audio.H>
 
 Game_Board::Game_Board()
   : width(0), height(0), scale(0.0), map(nullptr), num_cookies(0),
@@ -43,6 +44,11 @@ Game_Board::Game_Board()
 Game_Board::~Game_Board()
 {
   destroy_map();
+}
+
+Game_Board::Status Game_Board::get_status()
+{
+  return status;
 }
 
 void Game_Board::load()
@@ -218,6 +224,9 @@ void Game_Board::eat(const size_t & i, const size_t & j)
 
   if (c == '*')
     {
+      if (status == Default_Status)
+        Audio::get_instance().play_intermission();
+
       status = Counting_Time_For_Big_Cookie;
       current_time_big_cookie = 0;
 
@@ -261,5 +270,7 @@ void Game_Board::update(const real & dt)
   status = Default_Status;
   Telegram_Sender::get_instance().send_global_message(this,
                                                       Big_Cookie_Time_Over);
+
+  Audio::get_instance().stop_intermission();
 }
 

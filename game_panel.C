@@ -45,6 +45,8 @@ Game_Panel::Game_Panel(QWidget * parent)
   setFixedSize(1024, 768);
 
   connect(&timer, SIGNAL(timeout()), this, SLOT(update()));
+
+  Audio::get_instance().play_intro();
 }
 
 void Game_Panel::remove_sprites()
@@ -89,6 +91,7 @@ void Game_Panel::start_game()
   status = Status::Running;
   timer.start(33);
   time.start();
+  Audio::get_instance().play_chomp();
 }
 
 void Game_Panel::stop_game(const int & num_message)

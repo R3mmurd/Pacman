@@ -26,6 +26,7 @@
 # define SINGLETON_H
 
 # include <memory>
+# include <type_traits>
 
 /** Generic Singleton.
  *
@@ -58,6 +59,9 @@
 template <typename T>
 class Singleton
 {
+  //static_assert(std::is_base_of<Singleton<T>, T>::value,
+   //              "Singleton is not base of T");
+
   static std::unique_ptr<Singleton<T>> instance;
 
 protected:
