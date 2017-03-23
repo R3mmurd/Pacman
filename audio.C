@@ -2,11 +2,11 @@
 
 Audio::Audio()
 {
-  intro = new QSound("Audio/pacman_beginning.wav");
-  chomp = new QSound("Audio/pacman_chomp.wav");
-  death = new QSound("Audio/pacman_death.wav");
-  eat_ghost = new QSound("Audio/pacman_eatghost.wav");
-  intermission = new QSound("Audio/pacman_intermission.wav");
+  intro = new QSound(":/audio/beginning");
+  chomp = new QSound(":/audio/chomp");
+  death = new QSound(":/audio/death");
+  eat_ghost = new QSound(":/audio/eatghost");
+  intermission = new QSound(":/audio/intermission");
 
   chomp->setLoops(QSound::Infinite);
   intermission->setLoops(QSound::Infinite);

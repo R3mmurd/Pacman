@@ -44,7 +44,7 @@ Sprite * Sprite_Factory::build_sprite(QStringList & attributes)
 
         int num_images = attributes.at(1).toInt();
 
-        QString bn = ":/pacman/";
+        QString bn = ":/images/pacman/";
 
         for (int i = 0; i < num_images; ++i)
           {
@@ -79,7 +79,7 @@ Sprite * Sprite_Factory::build_sprite(QStringList & attributes)
 
         int num_images = attributes.at(1).toInt();
 
-        QString bn = ":/tux/";
+        QString bn = ":/images/tux/";
         bn.append(attributes.at(2));
         bn.append("/");
 

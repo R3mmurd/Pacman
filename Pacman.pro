@@ -45,7 +45,7 @@ SOURCES += \
     audio.C
 
 RESOURCES += \
-    images.qrc
+    multimedia.qrc
 
 OTHER_FILES += \
     Text_Files/map_1.txt \
