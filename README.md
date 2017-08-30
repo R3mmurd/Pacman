@@ -1,4 +1,4 @@
-Pacman: An implementation example.
+# Pacman: An implementation example.
 
 This is an simple example that shows how to program graphic games with sprite
 animations, controlable characters, automatic characters, message sending and
