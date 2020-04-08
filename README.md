@@ -9,7 +9,7 @@ order to load your own map you must edit the file current_map.txt and write
 your file name. You must edit sprites.txt in order to specify where pacman and
 ghosts will appear.
 
-System requeriments:
+System requirements:
 
 - GNU/Linux Operating System
 - Qt5
