@@ -42,8 +42,9 @@ class Sprite : public Element
 protected:
   unsigned int num_images;
   QString      images_names[Max_Num_Images];
-  real         curr_image_idx;
-  real         images_speed;
+  unsigned int curr_image_idx;
+  real         timer;
+  real         time_interval;
 
 public:
   Sprite();

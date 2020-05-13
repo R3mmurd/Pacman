@@ -30,27 +30,29 @@
 # include <game_board.H>
 
 Sprite::Sprite()
-  : Element(), num_images(0), curr_image_idx(0), images_speed(30)
+  : Element(), num_images(0), curr_image_idx(0), timer(0), time_interval(0.02)
 {
   // Empty
 }
 
 Sprite::Sprite(const Sprite & sprite)
   : Element(sprite), num_images(sprite.num_images),
-    curr_image_idx(sprite.curr_image_idx), images_speed(sprite.images_speed)
+    curr_image_idx(sprite.curr_image_idx), timer(sprite.timer),
+    time_interval(sprite.time_interval)
 {
   for (unsigned int i = 0; i < num_images; ++i)
     images_names[i] = sprite.images_names[i];
 }
 
 Sprite::Sprite(Sprite && sprite)
-  : Element(std::move(sprite)), num_images(0), curr_image_idx(0),
-    images_speed(30)
+  : Element(std::move(sprite)), num_images(0), curr_image_idx(0), timer(0),
+    time_interval(0.2)
 {
   std::swap(num_images, sprite.num_images);
   std::swap(images_names, sprite.images_names);
   std::swap(curr_image_idx, sprite.curr_image_idx);
-  std::swap(images_speed, sprite.images_speed);
+  std::swap(timer, sprite.timer);
+  std::swap(time_interval, sprite.time_interval);
 }
 
 Sprite::~Sprite()
@@ -80,11 +82,16 @@ void Sprite::add_image(const QString & name)
 
 void Sprite::update(const real & dt)
 {
-  curr_image_idx += images_speed * dt;
+  if (num_images > 1)
+    {
+      timer += dt;
 
-  if (curr_image_idx >= num_images)
-    curr_image_idx -= num_images * int(curr_image_idx / num_images);
-
+      if (timer > time_interval)
+        {
+          timer = module(timer, time_interval);
+          curr_image_idx = (curr_image_idx + 1) % num_images;
+        }
+    }
   Element::update(dt);
 }
 
@@ -101,7 +108,8 @@ Sprite & Sprite::operator = (const Sprite & sprite)
     images_names[i] = sprite.images_names[i];
 
   curr_image_idx = sprite.curr_image_idx;
-  images_speed = sprite.images_speed;
+  timer = sprite.timer;
+  time_interval = sprite.time_interval;
 
   return *this;  
 }
@@ -113,7 +121,8 @@ Sprite & Sprite::operator = (Sprite && sprite)
   std::swap(num_images, sprite.num_images);
   std::swap(images_names, sprite.images_names);
   std::swap(curr_image_idx, sprite.curr_image_idx);
-  std::swap(images_speed, sprite.images_speed);
+  std::swap(timer, sprite.timer);
+  std::swap(time_interval, sprite.time_interval);
 
   return *this;
 }

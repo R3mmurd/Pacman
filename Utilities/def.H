@@ -34,7 +34,14 @@
 # define RADIANS_2_DEGREES(t) (((t) * A_PI_DEGREES) / M_PI)
 # define DEGREES_2_RADIANS(t) (((t) * M_PI) / A_PI_DEGREES)
 
-typedef double real;
+using real = double;
+
+inline real module(real a, real b)
+{
+  int c = a / b;
+  return a - b*c;
+}
+
 
 # endif /* DEF_H */
 
