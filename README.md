@@ -12,3 +12,9 @@ ghosts will appear.
 
 - C++ v14 or higher
 - Qt5
+
+## Demo
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=UsoNnCvIuO0
+" target="_blank"><img src="http://img.youtube.com/vi/UsoNnCvIuO0/0.jpg"
+alt="Demo Pacman" width="240" height="180" border="10" /></a>
