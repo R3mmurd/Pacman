@@ -1,6 +1,7 @@
 # Pacman
 
-This a remake of the classic game Pacman.
+This a remake of the classic game
+[Pacman](https://en.wikipedia.org/wiki/Pac-Man).
 
 You may define your own map in a text file (see examples inside Text_Files).
 In order to load your own map, you must edit the file current_map.txt and write
