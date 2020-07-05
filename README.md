@@ -1,20 +1,13 @@
-# Pacman: An implementation example.
+# Pacman
 
-This is an simple example that shows how to program graphic games with sprite
-animations, controlable characters, automatic characters, message sending and
-screen scrolling.
+This a remake of the classic game Pacman.
 
-You may define your own map in a text file (see examples inside Text_Files). In
-order to load your own map you must edit the file current_map.txt and write
-your file name. You must edit sprites.txt in order to specify where pacman and
+You may define your own map in a text file (see examples inside Text_Files).
+In order to load your own map, you must edit the file current_map.txt and write
+your file name. You must edit sprites.txt in order to specify where Pacman and
 ghosts will appear.
 
-System requirements:
+## Requirements
 
-- GNU/Linux Operating System
+- C++ v14 or higher
 - Qt5
-
-FIXME list:
-- Screen scrolling is not working when map is smaller than canvas.
-
-Author: Alejandro J. Mujica (aledrums@gmail.com).
